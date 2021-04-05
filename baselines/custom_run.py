@@ -60,6 +60,9 @@ def train(args, extra_args):
     alg_kwargs = get_learn_function_defaults(args.alg, env_type)
     alg_kwargs.update(extra_args)
 
+    # if args.save_path is not None:
+    #     alg_kwargs.update({'save_path':args.save_path})
+
     env = build_env(args, **alg_kwargs)
     if args.save_video_interval != 0:
         env = VecVideoRecorder(env, osp.join(logger.get_dir(), "videos"), record_video_trigger=lambda x: x % args.save_video_interval == 0, video_length=args.save_video_length)
