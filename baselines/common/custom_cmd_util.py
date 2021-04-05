@@ -61,7 +61,7 @@ def make_env(env_id, env_type, mpi_rank=0, subrank=0, seed=None, reward_scale=1.
         gamestate = gamestate or retro.State.DEFAULT
         env = retro_wrappers.make_retro(game=env_id, max_episode_steps=10000, use_restricted_actions=retro.Actions.DISCRETE, state=gamestate)
     else:
-        if 'enc_path' in wrapper_kwargs:
+        if 'demon_latent' in wrapper_kwargs:
             env = gym.make(env_id, **wrapper_kwargs)
         else:
             env = gym.make(env_id)
